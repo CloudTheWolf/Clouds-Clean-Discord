@@ -2,12 +2,52 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.1
+ * @version 1.0.2
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
 */
 
+/***
+ * Direct Messages
+ ***/
+.visual-refresh .scroller__99e7c {
+    margin-bottom: unset;
+}
+
+/***
+ * Channel Text Area
+ ***/
+ 
+.channelBottomBarArea_f75fb0 {
+    display: flex;
+    flex-direction: column;
+}
+
+.channelBottomBarArea_f75fb0 .channelTextArea_f75fb0 .channelTextArea__74017 {
+    order: 2;
+    display: flex;
+}
+
+.channelBottomBarArea_f75fb0 > span {
+    order: -1;
+    display: block !important;
+    margin-bottom: 10px;
+}
+
+.container_c48ade {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    --custom-chat-input-margin-bottom: 6px;
+    --custom-chat-input-margin-top: 6px;
+}
+
+/***
+ * Profile Area
+ ***/
 .visual-refresh .panels_c48ade {
     position: absolute;
     background: var(--bg-overlay-floating,var(--background-base-low));
