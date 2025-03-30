@@ -9,6 +9,13 @@
 */
 
 /***
+ * Import Material Icons
+ ***/
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+
+/***
  * Direct Messages
  ***/
 .visual-refresh .scroller__99e7c {
@@ -80,6 +87,45 @@
     background: var(--bg-overlay-4,var(--background-base-lowest));
     padding-bottom: 0;
     margin-left: -1px;
+}
+
+/* Ensure the avatar element is positioned relatively */
+.container__37e49 .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49 {
+    position: relative;
+  }
+  
+  /* Mute icon: applied when the mute button is enabled */
+  .container__37e49:has(.buttons__37e49 .micButtonParent__37e49 button[aria-label="Mute"][aria-checked="true"]) 
+    .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::after {
+    content: "mic_off";
+    font-family: "Material Icons";
+    background-color: #0c0c0e;
+    border-radius: 75%;
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+    font-size: 1.2em;
+    color: crimson;
+    padding: 2px;
+    z-index: 9998;
+    font-size:13px;
+  }
+  
+/* Deafen icon on ::before */
+.container__37e49:has(.buttons__37e49 button[aria-label="Deafen"][aria-checked="true"]) 
+  .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::before {
+  content: "headset_off";
+  font-family: "Material Icons";
+  background-color: #0c0c0e;
+  border-radius: 75%;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  font-size: 1.2em;
+  color: crimson;
+  padding: 2px;
+  z-index: 9999;
+  font-size:13px;
 }
 
 /***
