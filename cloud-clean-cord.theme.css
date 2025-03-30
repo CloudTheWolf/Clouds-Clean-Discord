@@ -2,7 +2,7 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.3
+ * @version 1.0.4
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
@@ -36,10 +36,14 @@
     display: flex;
 }
 
-.channelBottomBarArea_f75fb0 > span {
+.channelBottomBarArea_f75fb0 {
+    margin-top: 5px;
+}
+.typing_b88801 {
     order: -1;
     display: block !important;
-    margin-bottom: 10px;
+    margin-bottom: 52px;
+    padding: 2px;
 }
 
 .container_c48ade {
