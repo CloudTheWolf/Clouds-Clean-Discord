@@ -2,7 +2,7 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.4
+ * @version 1.0.5
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
@@ -62,7 +62,7 @@
 .visual-refresh .panels_c48ade {
     position: absolute;
     background: var(--bg-overlay-floating,var(--background-base-low));
-    border-radius: var(--radius-sm) 100% 100% var(--radius-sm);
+    border-radius: var(--radius-sm) 15% 15% var(--radius-sm);
     border: 0px solid var(--border-faint);
     left: 12px;
     bottom: 5px;
@@ -133,7 +133,7 @@
 }
 
 /***
- * Hide the "Screen Share" Button unless 
+ * Hide the "Screen Share" Button unless Hovering 
  ***/
 .visual-refresh .panels_c48ade .activityPanel_c48ade .body__5dec7 .actions__4cd01 .panelButtonContainer__4cd01 {
     opacity: 0;
@@ -142,4 +142,73 @@
 
 .visual-refresh .panels_c48ade:hover .activityPanel_c48ade .body__5dec7 .actions__4cd01 .panelButtonContainer__4cd01 {
     opacity: 1;
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9{
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9{
+    opacity: 1;
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .actionButtons_e131a9 {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .actionButtons_e131a9 {
+    opacity: 1;
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 {
+    position: absolute;
+    width: 15px;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 {
+    position: unset;
+    width: unset;
+    height: unset;
+    z-index: unset;
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 a{
+    opacity: 0; 
+    transition: opacity 0.5s ease;      
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 a{
+    opacity: 1;       
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62{
+    margin-top: 45px;
+    margin-left: 3px;
+    height: 32px;
+    width: 32px;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 .ping__06d62{
+    height: 32px;
+    width: 32px;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62{
+    margin-top: unset;
+    margin-left: unset;
+    height: 24px;
+    width: 100%;
+    transition: opacity 0.5s ease;
+}
+
+.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 .ping__06d62{
+    height: initial;
+    width: initial;
+    transition: opacity 0.5s ease;
 }
