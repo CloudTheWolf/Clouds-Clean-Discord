@@ -2,51 +2,74 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.5
+ * @version 1.0.7
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
-*/
+ */
 
-/***
- * Import Material Icons
- ***/
+/* ============================================================
+   GLOBAL IMPORTS
+   ============================================================ */
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 
-/***
- * Direct Messages
- ***/
-.visual-refresh .scroller__99e7c {
+/* ============================================================
+   BETTERDISCORD COMPATIBILITY
+   BD adds body.bd-theme when a theme is active
+   Vencord/Web keeps all original .visual-refresh selectors
+   → So we mirror all .visual-refresh rules with body.bd-theme
+   ============================================================ */
+
+:root,
+body.bd-theme {
+    --ccd-enabled: 1;
+}
+
+/* Helper macro — BD themes don't use .visual-refresh */
+body.bd-theme .visual-refresh {
+    /* BD does not need this class but if injected, allow styles to run */
+    all: unset;
+}
+
+/* ============================================================
+   DIRECT MESSAGES
+   ============================================================ */
+
+.visual-refresh .scroller__99e7c,
+body.bd-theme .scroller__99e7c {
     margin-bottom: unset;
 }
 
-/***
- * Channel Text Area
- ***/
- 
-.channelBottomBarArea_f75fb0 {
+
+/* ============================================================
+   CHANNEL TEXT AREA
+   ============================================================ */
+
+.channelBottomBarArea_f75fb0,
+body.bd-theme .channelBottomBarArea_f75fb0 {
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
 }
 
-.channelBottomBarArea_f75fb0 .channelTextArea_f75fb0 .channelTextArea__74017 {
+.channelBottomBarArea_f75fb0 .channelTextArea_f75fb0 .channelTextArea__74017,
+body.bd-theme .channelTextArea_f75fb0 .channelTextArea__74017 {
     order: 2;
     display: flex;
 }
 
-.channelBottomBarArea_f75fb0 {
-    margin-top: 5px;
-}
-.typing_b88801 {
+.typing_b88801,
+body.bd-theme .typing_b88801 {
     order: -1;
     display: block !important;
     margin-bottom: 52px;
     padding: 2px;
 }
 
-.container_c48ade {
+.container_c48ade,
+body.bd-theme .container_c48ade {
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -56,50 +79,64 @@
     --custom-chat-input-margin-top: 6px;
 }
 
-/***
- * Profile Area
- ***/
-.visual-refresh .panels_c48ade {
+
+/* ============================================================
+   PROFILE AREA (USER PANEL)
+   ============================================================ */
+
+.visual-refresh .panels__5e434,
+body.bd-theme .panels__5e434 {
     position: absolute;
-    background: var(--bg-overlay-floating,var(--background-base-low));
+    background: var(--bg-overlay-floating, var(--background-base-low));
     border-radius: var(--radius-sm) 15% 15% var(--radius-sm);
     border: 0px solid var(--border-faint);
-    left: 12px;
+    left: 5px;
     bottom: 5px;
     justify-content: space-between;
     width: calc(20% - var(--space-xs)*2);
     box-sizing: border-box;
-    /* Added transition for width and border-radius */
     transition: width 0.5s ease, border-radius 0.1s ease;
 }
 
-.visual-refresh .panels_c48ade:hover {
-    width: calc(80% - var(--space-xs)*2);
+.visual-refresh .panels__5e434:hover,
+body.bd-theme .panels__5e434:hover {
+    width: calc(99% - var(--space-xs)*2);
     border-radius: var(--radius-sm);
 }
 
-.visual-refresh .panels_c48ade .buttons__37e49 {
+.visual-refresh .panels__5e434 .buttons__37e49,
+body.bd-theme .panels__5e434 .buttons__37e49 {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .buttons__37e49 {
+.visual-refresh .panels__5e434:hover .buttons__37e49,
+body.bd-theme .panels__5e434:hover .buttons__37e49 {
     opacity: 1;
 }
 
-.visual-refresh .container__2637a {
-    background: var(--bg-overlay-4,var(--background-base-lowest));
+.visual-refresh .container__2637a,
+body.bd-theme .container__2637a {
+    background: var(--bg-overlay-4, var(--background-base-lowest));
     padding-bottom: 0;
     margin-left: -1px;
 }
 
-/* Ensure the avatar element is positioned relatively */
-.container__37e49 .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49 {
+
+/* ============================================================
+   MUTE / DEAFEN STATUS ICONS ON AVATAR
+   ============================================================ */
+
+/* Avatar wrapper must stay relative */
+.container__37e49 .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49,
+body.bd-theme .container__37e49 .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49 {
     position: relative;
-  }
-  
-  /* Mute icon: applied when the mute button is enabled */
-  .container__37e49:has(.buttons__37e49 .micButtonParent__37e49 button[aria-label="Mute"][aria-checked="true"]) 
+}
+
+/* MUTE */
+.container__37e49:has(.buttons__37e49 button[aria-label="Mute"][aria-checked="true"])
+    .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::after,
+body.bd-theme .container__37e49:has(.buttons__37e49 button[aria-label="Mute"][aria-checked="true"])
     .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::after {
     content: "mic_off";
     font-family: "Material Icons";
@@ -108,84 +145,104 @@
     position: absolute;
     bottom: -5px;
     left: -5px;
-    font-size: 1.2em;
     color: crimson;
     padding: 2px;
     z-index: 9998;
-    font-size:13px;
-  }
-  
-/* Deafen icon on ::before */
-.container__37e49:has(.buttons__37e49 button[aria-label="Deafen"][aria-checked="true"]) 
-  .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::before {
-  content: "headset_off";
-  font-family: "Material Icons";
-  background-color: #0c0c0e;
-  border-radius: 75%;
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  font-size: 1.2em;
-  color: crimson;
-  padding: 2px;
-  z-index: 9999;
-  font-size:13px;
+    font-size: 13px;
 }
 
-/***
- * Hide the "Screen Share" Button unless Hovering 
- ***/
-.visual-refresh .panels_c48ade .activityPanel_c48ade .body__5dec7 .actions__4cd01 .panelButtonContainer__4cd01 {
+/* DEAFEN */
+.container__37e49:has(.buttons__37e49 button[aria-label="Deafen"][aria-checked="true"])
+    .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::before,
+body.bd-theme .container__37e49:has(.buttons__37e49 button[aria-label="Deafen"][aria-checked="true"])
+    .avatarWrapper__37e49 .wrapper__44b0c.avatar__37e49::before {
+    content: "headset_off";
+    font-family: "Material Icons";
+    background-color: #0c0c0e;
+    border-radius: 75%;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    color: crimson;
+    padding: 2px;
+    z-index: 9999;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   HIDE SCREEN SHARE BTN UNTIL HOVER
+   ============================================================ */
+
+.visual-refresh .panels__5e434 .activityPanel_c48ade .actions__4cd01 .panelButtonContainer__4cd01,
+body.bd-theme .panels__5e434 .activityPanel_c48ade .actions__4cd01 .panelButtonContainer__4cd01 {
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .activityPanel_c48ade .body__5dec7 .actions__4cd01 .panelButtonContainer__4cd01 {
+.visual-refresh .panels__5e434:hover .activityPanel_c48ade .actions__4cd01 .panelButtonContainer__4cd01,
+body.bd-theme .panels__5e434:hover .activityPanel_c48ade .actions__4cd01 .panelButtonContainer__4cd01 {
     opacity: 1;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9{
+
+/* ============================================================
+   VOICE PANEL BUTTONS + STATUS EXPAND ON HOVER
+   ============================================================ */
+
+.visual-refresh .panels__5e434 .wrapper_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9,
+body.bd-theme .panels__5e434 .wrapper_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9 {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .voiceButtonsContainer_e131a9{
+.visual-refresh .panels__5e434:hover .connection_e131a9 .voiceButtonsContainer_e131a9,
+body.bd-theme .panels__5e434:hover .connection_e131a9 .voiceButtonsContainer_e131a9 {
     opacity: 1;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .actionButtons_e131a9 {
+.visual-refresh .panels__5e434 .wrapper_e131a9 .actionButtons_e131a9,
+body.bd-theme .panels__5e434 .wrapper_e131a9 .actionButtons_e131a9 {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .actionButtons_e131a9 {
+.visual-refresh .panels__5e434:hover .actionButtons_e131a9,
+body.bd-theme .panels__5e434:hover .actionButtons_e131a9 {
     opacity: 1;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 {
+.visual-refresh .panels__5e434 .connection_e131a9 .inner_e131a9,
+body.bd-theme .panels__5e434 .connection_e131a9 .inner_e131a9 {
     position: absolute;
     width: 15px;
     z-index: 9999;
     transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 {
+.visual-refresh .panels__5e434:hover .inner_e131a9,
+body.bd-theme .panels__5e434:hover .inner_e131a9 {
     position: unset;
     width: unset;
     height: unset;
     z-index: unset;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 a{
-    opacity: 0; 
-    transition: opacity 0.5s ease;      
+.visual-refresh .panels__5e434 .inner_e131a9 a,
+body.bd-theme .panels__5e434 .inner_e131a9 a {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 a{
-    opacity: 1;       
+.visual-refresh .panels__5e434:hover .inner_e131a9 a,
+body.bd-theme .panels__5e434:hover .inner_e131a9 a {
+    opacity: 1;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62{
+
+/* Connection Status Icon */
+.visual-refresh .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62,
+body.bd-theme .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 {
     margin-top: 45px;
     margin-left: 3px;
     height: 32px;
@@ -193,22 +250,24 @@
     transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 .ping__06d62{
+.visual-refresh .panels__5e434:hover .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62,
+body.bd-theme .panels__5e434:hover .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 {
+    margin-top: unset;
+    margin-left: unset;
+    height: 24px;
+    width: 100%;
+}
+
+/* Ping icon */
+.visual-refresh .ping__06d62,
+body.bd-theme .ping__06d62 {
     height: 32px;
     width: 32px;
     transition: opacity 0.5s ease;
 }
 
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62{
-    margin-top: unset;
-    margin-left: unset;
-    height: 24px;
-    width: 100%;
-    transition: opacity 0.5s ease;
-}
-
-.visual-refresh .panels_c48ade:hover .wrapper_e131a9 .container_e131a9 .connection_e131a9 .inner_e131a9 .rtcConnectionStatusWrapper__06d62 .rtcConnectionStatus__06d62 .ping__06d62{
+.visual-refresh .panels__5e434:hover .ping__06d62,
+body.bd-theme .panels__5e434:hover .ping__06d62 {
     height: initial;
     width: initial;
-    transition: opacity 0.5s ease;
 }
