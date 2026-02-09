@@ -2,7 +2,7 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.7
+ * @version 1.0.6
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
@@ -81,7 +81,7 @@ body.bd-theme .container_c48ade {
 
 
 /* ============================================================
-   PROFILE AREA (USER PANEL)
+   PROFILE AREA (USER PANEL) 
    ============================================================ */
 
 .visual-refresh .panels__5e434,
@@ -95,7 +95,7 @@ body.bd-theme .panels__5e434 {
     justify-content: space-between;
     width: calc(20% - var(--space-xs)*2);
     box-sizing: border-box;
-    transition: width 0.5s ease, border-radius 0.1s ease;
+    transition: width 0.15s ease, border-radius 0.15s ease;
 }
 
 .visual-refresh .panels__5e434:hover,
@@ -270,4 +270,25 @@ body.bd-theme .ping__06d62 {
 body.bd-theme .panels__5e434:hover .ping__06d62 {
     height: initial;
     width: initial;
+}
+
+
+
+
+.bottom__7aaec{
+    position: absolute !important;
+    bottom: 15px;
+    transition: transform 0.2s ease;
+}
+
+/* When panels are hovered — shift up */
+.visual-refresh:has(.panels__5e434:hover)
+  .bottom__7aaec {
+  transform: translateY(-56px);
+}
+
+.barText__7aaec {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
 }
