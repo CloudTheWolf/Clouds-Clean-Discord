@@ -2,7 +2,7 @@
  * @name Clouds Clean Discord
  * @author CloudTheWolf
  * @description A Basic QOL Patch for the new UI
- * @version 1.0.8
+ * @version 1.0.9
  * @authorId 126060427250630656
  * @source https://github.com/CloudTheWolf/Clouds-Clean-Discord
  * @updateUrl https://github.com/CloudTheWolf/Clouds-Clean-Discord/blob/main/cloud-clean-cord.theme.css
@@ -81,7 +81,7 @@ body.bd-theme .container_c48ade {
 
 
 /* ============================================================
-   PROFILE AREA (USER PANEL) 
+   PROFILE AREA (USER PANEL)  
    ============================================================ */
 
 .visual-refresh .panels__5e434,
@@ -90,7 +90,7 @@ body.bd-theme .panels__5e434 {
     background: var(--bg-overlay-floating, var(--background-base-low));
     border-radius: var(--radius-sm) 15% 15% var(--radius-sm);
     border: 0px solid var(--border-faint);
-    left: 5px;
+    left: 11px;
     bottom: 5px;
     justify-content: space-between;
     width: calc(20% - var(--space-xs)*2);
@@ -106,13 +106,16 @@ body.bd-theme .panels__5e434:hover {
 
 .visual-refresh .panels__5e434 .buttons__37e49,
 body.bd-theme .panels__5e434 .buttons__37e49 {
+    visibility: hidden;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 .visual-refresh .panels__5e434:hover .buttons__37e49,
 body.bd-theme .panels__5e434:hover .buttons__37e49 {
+    visibility: unset;
     opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .visual-refresh .container__2637a,
@@ -122,6 +125,9 @@ body.bd-theme .container__2637a {
     margin-left: -1px;
 }
 
+.stack_dbd263[data-justify=start]{
+    height: 98%;
+}
 
 /* ============================================================
    MUTE / DEAFEN STATUS ICONS ON AVATAR
@@ -291,4 +297,8 @@ body.bd-theme .panels__5e434:hover .ping__06d62 {
     width: 0px;
     height: 0px;
     opacity: 0;
+}
+
+.refreshVoiceChannelsButton__29444{
+    visibility: hidden
 }
